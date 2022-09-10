@@ -1,41 +1,38 @@
 const boom = require('@hapi/boom');
 
-const getConnection = require('../libs/postgres');
-const pool = require('../libs/postgres.pool')
+const sequelize = require('../libs/sequelize')
 
 class UserService {
-  constructor() {
-    this.pool = pool;
-    this.pool.on('error', (err) => console.log(err))
-  }
+    constructor() {}
 
-  async create(data) {
-    return data;
-  }
+    async create(data) {
 
-  async find() {
-    const query = 'SELECT * FROM users';
-    const rta = await this.pool.query(query);
+        return data;
+    }
 
-    return rta.rows;
-  }
+    async find() {
+        const query = 'SELECT * FROM users';
+        const [data] = await sequelize.query(query);
 
-  async findOne(id) {
-    const query = 'SELECT * FROM users WHERE id = ' + id;
-    const rta = await this.pool.query(query);
-    return rta.rows;
-  }
+        return data;
+    }
 
-  async update(id, changes) {
-    return {
-      id,
-      changes,
-    };
-  }
+    async findOne(id) {
+        const query = 'SELECT * FROM users WHERE id = ' + id;
+        const [data] = await sequelize.query(query);
 
-  async delete(id) {
-    return { id };
-  }
+        return data;
+    }
+
+    async update(id, changes) {
+
+        return {id,changes,};
+    }
+
+    async delete(id) {
+
+        return { id };
+    }
 }
 
 module.exports = UserService;
