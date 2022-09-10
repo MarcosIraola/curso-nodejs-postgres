@@ -6,29 +6,32 @@ class UserService {
     constructor() {}
 
     async create(data) {
-
-        return data;
+        const newUser = models.User.create(data)
+        return newUser;
     }
 
     async find() {
-        const rta = await models.User.findAll()
-        return rta;
+        const all = await models.User.findAll()
+        return all;
     }
 
-    async findOne(id) {
-        const query = 'SELECT * FROM users WHERE id = ' + id;
-        const [data] = await sequelize.query(query);
-
-        return data;
+    async findById(id) {
+        const user = await models.User.findByPk(id)
+        if (!user) {
+            throw boom.notFound('User not found')
+        }
+        return user;
     }
 
     async update(id, changes) {
-
-        return {id,changes,};
+        const user = await this.findById(id);
+        const rta = await user.update(changes)
+        return rta;
     }
 
     async delete(id) {
-
+        const user = await this.findById(id);
+        await user.destroy();
         return { id };
     }
 }
