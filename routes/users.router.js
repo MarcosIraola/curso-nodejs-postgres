@@ -21,8 +21,8 @@ router.get('/:id',
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const category = await service.findOne(id);
-      res.json(category);
+      const users = await service.findOne(id);
+      res.json(users);
     } catch (error) {
       next(error);
     }
