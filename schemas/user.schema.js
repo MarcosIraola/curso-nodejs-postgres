@@ -16,6 +16,11 @@ const createUserSchema = Joi.object({
     // role: role
 });
 
+
+const getUserSchema = Joi.object({
+    id: id.required(),
+});
+
 const updateUserSchema = Joi.object({
     username: username,
     email: email,
@@ -24,10 +29,6 @@ const updateUserSchema = Joi.object({
     wins: wins,
     loss: loss,
     // role: role,
-});
-
-const getUserSchema = Joi.object({
-    id: id.required(),
 });
 
 module.exports = { createUserSchema, updateUserSchema, getUserSchema }

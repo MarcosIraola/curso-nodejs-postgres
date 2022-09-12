@@ -3,10 +3,13 @@ const boom = require('@hapi/boom');
 const { models } = require('../libs/sequelize');
 
 class MatchService {
-    constructor() {}
+
+    constructor() {
+
+    }
 
     async create(data) {
-        const newMatch = models.Match.create(data)
+        const newMatch = await models.Match.create(data)
         return newMatch;
     }
 

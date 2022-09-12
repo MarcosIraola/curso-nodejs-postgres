@@ -21,16 +21,16 @@ const createMatchSchema = Joi.object({
     location: location,
 });
 
+const getMatchSchema = Joi.object({
+    id: id.required(),
+});
+
 const updateMatchSchema = Joi.object({
     team_1: team_1,
     team_2: team_2,
     score_team_1: score_team_1,
     score_team_2: score_team_2,
     location: location,
-});
-
-const getMatchSchema = Joi.object({
-    id: id.required(),
 });
 
 module.exports = { createMatchSchema, updateMatchSchema, getMatchSchema }
