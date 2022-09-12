@@ -25,7 +25,7 @@ class MatchService {
 
     async update(id, changes) {
         const match = await this.findById(id);
-        const rta = await Match.update(changes)
+        const rta = await match.update(changes)
         return rta;
     }
 
