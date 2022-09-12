@@ -7,15 +7,13 @@ const password = Joi.string().min(8);
 const games = Joi.number().integer();
 const wins = Joi.number().integer();
 const loss = Joi.number().integer();
-
-// const role = Joi.string().min(5)
+// const role = Joi.string();
 
 const createUserSchema = Joi.object({
     username: username.required(),
     email: email.required(),
     password: password.required(),
-
-    // role: role.required()
+    // role: role
 });
 
 const updateUserSchema = Joi.object({

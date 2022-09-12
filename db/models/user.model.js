@@ -38,6 +38,11 @@ const UserSchema = {
         type: DataTypes.INTEGER,
         defaultValue: 0
     },
+    // role: {
+    //     allowNull: true,
+    //     type: DataTypes.STRING,
+    //     defaultValue: 'player'
+    // },
     createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
