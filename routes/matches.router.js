@@ -2,7 +2,7 @@ const express = require('express');
 
 const MatchService = require('../services/match.service');
 const validatorHandler = require('../middlewares/validator.handler');
-const { createMatchSchema, updateMatchSchema, getMatchSchema } = require('../schemas/match.schema');
+const { createMatchSchema, updateMatchSchema, getMatchSchema, addUserSchema } = require('../schemas/match.schema');
 
 const router = express.Router();
 const service = new MatchService();
@@ -36,6 +36,19 @@ router.post('/',
             const body = req.body;
             const newMatch = await service.create(body);
             res.status(201).json(newMatch);
+        } catch (error) {
+            next(error);
+        }
+    }
+);
+
+router.post('/add-user',
+    validatorHandler(addUserSchema, 'body'),
+    async (req, res, next) => {
+        try {
+            const body = req.body;
+            const newUser = await service.addUser(body);
+            res.status(201).json(newUser);
         } catch (error) {
             next(error);
         }

@@ -13,6 +13,11 @@ class MatchService {
         return newMatch;
     }
 
+    // async addUser(data) {
+    //     const addUser = await models.UserMatch.create(data)
+    //     return addUser;
+    // }
+
     async find() {
         const all = await models.Match.findAll()
         return all;
