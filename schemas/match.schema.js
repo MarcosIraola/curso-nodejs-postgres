@@ -19,7 +19,6 @@ const createMatchSchema = Joi.object({
     score_team_1: score_team_1.required(),
     score_team_2: score_team_2.required(),
     location: location,
-    // role: role.required()
 });
 
 const updateMatchSchema = Joi.object({
@@ -28,7 +27,6 @@ const updateMatchSchema = Joi.object({
     score_team_1: score_team_1,
     score_team_2: score_team_2,
     location: location,
-    // role: role,
 });
 
 const getMatchSchema = Joi.object({

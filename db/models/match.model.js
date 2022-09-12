@@ -40,6 +40,7 @@ const MatchSchema = {
 }
 
 class Match extends Model {
+
     static associate() {
         // models
     }
