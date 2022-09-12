@@ -1,11 +1,15 @@
 const Joi = require('joi');
 
 const id = Joi.number().integer();
-const team_1 = Joi.string();
-const team_2 = Joi.string();
-const score_team_1 = Joi.number().integer()
+const team_1 = Joi.array().items(Joi.string());
+const team_2 = Joi.array().items(Joi.string());
+const score_team_1 = Joi.number().integer();
 const score_team_2 = Joi.number().integer();
 const location = Joi.string();
+
+// const team_1 = Joi.array().items(Joi.object({
+//     Object schema
+// }))
 
 // const role = Joi.string().min(5)
 

@@ -11,11 +11,11 @@ const MatchSchema = {
     },
     team_1: {
         allowNull: true,
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING)
     },
     team_2: {
         allowNull: true,
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING)
     },
     score_team_1: {
         allowNull: true,
