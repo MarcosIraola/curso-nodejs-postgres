@@ -9,6 +9,9 @@ const wins = Joi.number().integer();
 const loss = Joi.number().integer();
 // const role = Joi.string();
 
+const user_id = Joi.number().integer();
+const match_id = Joi.number().integer();
+
 const createUserSchema = Joi.object({
     username: username.required(),
     email: email.required(),
@@ -31,4 +34,10 @@ const updateUserSchema = Joi.object({
     // role: role,
 });
 
-module.exports = { createUserSchema, updateUserSchema, getUserSchema }
+
+const addMatchSchema = Joi.object({
+    user_id: user_id.required(),
+    match_id: match_id.required()
+})
+
+module.exports = { createUserSchema, updateUserSchema, getUserSchema, addMatchSchema }

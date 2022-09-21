@@ -10,6 +10,11 @@ class UserService {
         return newUser;
     }
 
+    async addMatch(data) {
+        const addMatch = await models.UserMatch.create(data)
+        return addMatch;
+    }
+
     async find() {
         const all = await models.User.findAll()
         return all;

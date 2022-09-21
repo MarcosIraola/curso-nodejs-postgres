@@ -54,7 +54,12 @@ const UserSchema = {
 
 class User extends Model {
     static associate(models) {
-
+        this.belongsToMany(models.User, {
+            as: 'games',
+            through: models.UserMatch,
+            foreignKey: 'user_id',
+            otherKey: 'match_id',
+        })
     }
 
     static config(sequelize) {

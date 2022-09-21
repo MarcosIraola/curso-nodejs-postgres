@@ -7,9 +7,6 @@ const score_team_1 = Joi.number().integer();
 const score_team_2 = Joi.number().integer();
 const location = Joi.string();
 
-const user_id = Joi.number().integer();
-const match_id = Joi.number().integer();
-
 // const team_1 = Joi.array().items(Joi.object({
 //     Object schema
 // }))
@@ -36,9 +33,6 @@ const updateMatchSchema = Joi.object({
     location: location,
 });
 
-const addUserSchema = Joi.object({
-    user_id: user_id.required(),
-    match_id: match_id.required()
-})
 
-module.exports = { createMatchSchema, updateMatchSchema, getMatchSchema, addUserSchema }
+
+module.exports = { createMatchSchema, updateMatchSchema, getMatchSchema }
