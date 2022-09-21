@@ -7,16 +7,16 @@ const password = Joi.string().min(8);
 const games = Joi.number().integer();
 const wins = Joi.number().integer();
 const loss = Joi.number().integer();
-// const role = Joi.string();
-
 const user_id = Joi.number().integer();
 const match_id = Joi.number().integer();
+
+const limit = Joi.number().integer();
+const offset = Joi.number().integer();
 
 const createUserSchema = Joi.object({
     username: username.required(),
     email: email.required(),
     password: password.required(),
-    // role: role
 });
 
 
@@ -31,13 +31,16 @@ const updateUserSchema = Joi.object({
     games: games,
     wins: wins,
     loss: loss,
-    // role: role,
 });
-
 
 const addMatchSchema = Joi.object({
     user_id: user_id.required(),
     match_id: match_id.required()
 })
 
-module.exports = { createUserSchema, updateUserSchema, getUserSchema, addMatchSchema }
+const queryMatchSchema = Joi.object({
+    limit,
+    offset
+})
+
+module.exports = { createUserSchema, updateUserSchema, getUserSchema, addMatchSchema, queryMatchSchema }

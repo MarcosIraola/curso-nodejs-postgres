@@ -2,26 +2,30 @@ const express = require('express');
 
 const UserService = require('./../services/user.service');
 const validatorHandler = require('./../middlewares/validator.handler');
-const { updateUserSchema, createUserSchema, getUserSchema, addMatchSchema } = require('./../schemas/user.schema');
+const { updateUserSchema, createUserSchema, getUserSchema, addMatchSchema, queryMatchSchema } = require('./../schemas/user.schema');
 
 const router = express.Router();
 const service = new UserService();
 
-router.get('/', async (req, res, next) => {
-    try {
-        const users = await service.find();
-        res.json(users);
-    } catch (error) {
-        next(error);
+router.get('/',
+    validatorHandler(queryMatchSchema, 'query'),
+    async (req, res, next) => {
+        try {
+            const users = await service.find(req.query);
+            res.json(users);
+        } catch (error) {
+            next(error);
+        }
     }
-});
+);
 
 router.get('/:id',
     validatorHandler(getUserSchema, 'params'),
+    validatorHandler(queryMatchSchema, 'query'),
     async (req, res, next) => {
         try {
             const { id } = req.params;
-            const user = await service.findById(id);
+            const user = await service.findById(id, req.query);
             res.json(user);
         } catch (error) {
             next(error);
@@ -47,7 +51,7 @@ router.post('/add-match',
     async (req, res, next) => {
         try {
             const body = req.body;
-            const addMatch = await service.addMatch(body);
+            const addMatch = await service.addMatchToUser(body);
             res.status(201).json(addMatch);
         } catch (error) {
             next(error);

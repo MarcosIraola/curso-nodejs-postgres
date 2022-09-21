@@ -10,20 +10,34 @@ class UserService {
         return newUser;
     }
 
-    async addMatch(data) {
+    async addMatchToUser(data) {
         const addMatch = await models.UserMatch.create(data)
         return addMatch;
     }
 
-    async find() {
-        const all = await models.User.findAll()
+    async find(query) {
+        const options = {
+            include: ['matches'],
+        }
+        const {limit, offset} = query;
+        if(limit && offset) {
+            options.limit = limit
+            options.offset = offset
+        }
+        const all = await models.User.findAll(options)
         return all;
     }
 
     async findById(id) {
-        const user = await models.User.findByPk(id, {
-            include: ['matches']
-        })
+        const options = {
+            include: ['matches'],
+        }
+        const {limit, offset} = query;
+        if(limit && offset) {
+            options.limit = limit
+            options.offset = offset
+        }
+        const user = await models.User.findByPk(id, options)
         if (!user) {
             throw boom.notFound('User not found')
         }
