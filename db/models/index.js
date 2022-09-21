@@ -5,7 +5,7 @@ const { UserMatch, UserMatchSchema } = require('./user-match.model');
 function setupModels(sequelize) {
     User.init(UserSchema, User.config(sequelize));
     Match.init(MatchSchema, Match.config(sequelize));
-    UserMatch.init(UserMatchSchema, Match.config(sequelize));
+    UserMatch.init(UserMatchSchema, UserMatch.config(sequelize));
 
     Match.associate(sequelize.models)
 }

@@ -13,10 +13,11 @@ class MatchService {
         return newMatch;
     }
 
-    // async addUser(data) {
-    //     const addUser = await models.UserMatch.create(data)
-    //     return addUser;
-    // }
+    async addUser(data) {
+        console.log(data)
+        const addUser = await models.UserMatch.create(data)
+        return addUser;
+    }
 
     async find() {
         const all = await models.Match.findAll()
@@ -24,7 +25,11 @@ class MatchService {
     }
 
     async findById(id) {
-        const match = await models.Match.findByPk(id)
+        const match = await models.Match.findByPk(id, {
+            include: [
+                'users'
+            ]
+        })
         if (!match) {
             throw boom.notFound('Match not found')
         }
