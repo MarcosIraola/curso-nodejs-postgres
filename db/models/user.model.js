@@ -54,8 +54,8 @@ const UserSchema = {
 
 class User extends Model {
     static associate(models) {
-        this.belongsToMany(models.User, {
-            as: 'games',
+        this.belongsToMany(models.Match, {
+            as: 'matches',
             through: models.UserMatch,
             foreignKey: 'user_id',
             otherKey: 'match_id',

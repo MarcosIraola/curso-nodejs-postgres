@@ -19,11 +19,7 @@ class MatchService {
     }
 
     async findById(id) {
-        const match = await models.Match.findByPk(id, {
-            include: [
-                'users'
-            ]
-        })
+        const match = await models.Match.findByPk(id)
         if (!match) {
             throw boom.notFound('Match not found')
         }

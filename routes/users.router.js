@@ -47,7 +47,7 @@ router.post('/add-match',
     async (req, res, next) => {
         try {
             const body = req.body;
-            const addMatch = await service.addUser(body);
+            const addMatch = await service.addMatch(body);
             res.status(201).json(addMatch);
         } catch (error) {
             next(error);

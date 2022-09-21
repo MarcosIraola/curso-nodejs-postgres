@@ -21,7 +21,9 @@ class UserService {
     }
 
     async findById(id) {
-        const user = await models.User.findByPk(id)
+        const user = await models.User.findByPk(id, {
+            include: ['matches']
+        })
         if (!user) {
             throw boom.notFound('User not found')
         }
