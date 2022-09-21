@@ -1,6 +1,5 @@
 'use strict';
-
-const { UserMatchSchema, USER_MATCH_TABLE } = require('../models/user-match.model')
+const { UserMatchSchema, USER_MATCH_TABLE } = require('../models/user-match.model');
 
 module.exports = {
     async up (queryInterface) {
@@ -11,4 +10,3 @@ module.exports = {
         await queryInterface.dropTable(USER_MATCH_TABLE);
     }
 };
-

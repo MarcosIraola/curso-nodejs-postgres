@@ -1,4 +1,5 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
+const { USER_MATCH_TABLE } = require('./user-match.model');
 
 const USER_TABLE = 'users';
 
@@ -52,8 +53,15 @@ const UserSchema = {
 }
 
 class User extends Model {
-    static associate() {
+    static associate(models) {
         // models
+        // this.belongsToMany(models.Match, USER_MATCH_TABLE)
+        this.belongsToMany(models.Match, {
+            as: 'games',
+            through: models.UserMatch,
+            foreignKey: 'user_id',
+            otherKey: 'match_id',
+        })
     }
 
     static config(sequelize) {
