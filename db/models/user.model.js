@@ -56,12 +56,12 @@ class User extends Model {
     static associate(models) {
         // models
         // this.belongsToMany(models.Match, USER_MATCH_TABLE)
-        this.belongsToMany(models.Match, {
-            as: 'games',
-            through: models.UserMatch,
-            foreignKey: 'user_id',
-            otherKey: 'match_id',
-        })
+        // this.belongsToMany(models.Match, {
+        //     as: 'games',
+        //     through: models.UserMatch,
+        //     foreignKey: 'user_id',
+        //     otherKey: 'match_id',
+        // })
     }
 
     static config(sequelize) {

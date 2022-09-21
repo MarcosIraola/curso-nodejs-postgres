@@ -41,6 +41,21 @@ const MatchSchema = {
 
 class Match extends Model {
 
+    static associate(models) {
+        // this.belongsToMany(models.User, {
+        //     as: 'users',
+        //     through: models.UserMatch,
+        //     foreignKey: 'match_id',
+        //     otherKey: 'user_id',
+        // })
+        this.belongsToMany(models.User, {
+            as: 'users',
+            through: models.UserMatch,
+            foreignKey: 'match_id',
+            otherKey: 'user_id',
+        })
+    }
+
     static config(sequelize) {
         return {
             sequelize,

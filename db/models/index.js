@@ -7,7 +7,7 @@ function setupModels(sequelize) {
     Match.init(MatchSchema, Match.config(sequelize));
     UserMatch.init(UserMatchSchema, Match.config(sequelize));
 
-    User.associate(sequelize.models)
+    Match.associate(sequelize.models)
 }
 
 module.exports = setupModels;
