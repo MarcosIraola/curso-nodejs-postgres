@@ -29,15 +29,7 @@ class UserService {
     }
 
     async findById(id) {
-        const options = {
-            include: ['matches'],
-        }
-        const {limit, offset} = query;
-        if(limit && offset) {
-            options.limit = limit
-            options.offset = offset
-        }
-        const user = await models.User.findByPk(id, options)
+        const user = await models.User.findByPk(id)
         if (!user) {
             throw boom.notFound('User not found')
         }

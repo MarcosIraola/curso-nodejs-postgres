@@ -21,11 +21,10 @@ router.get('/',
 
 router.get('/:id',
     validatorHandler(getUserSchema, 'params'),
-    validatorHandler(queryMatchSchema, 'query'),
     async (req, res, next) => {
         try {
             const { id } = req.params;
-            const user = await service.findById(id, req.query);
+            const user = await service.findById(id);
             res.json(user);
         } catch (error) {
             next(error);
