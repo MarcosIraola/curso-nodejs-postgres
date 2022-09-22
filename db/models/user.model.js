@@ -1,5 +1,4 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
-const { USER_MATCH_TABLE } = require('./user-match.model');
 
 const USER_TABLE = 'users';
 
