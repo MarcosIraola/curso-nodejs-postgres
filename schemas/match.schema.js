@@ -1,8 +1,8 @@
 const Joi = require('joi');
 
 const id = Joi.number().integer();
-const team_1 = Joi.array().items(Joi.string());
-const team_2 = Joi.array().items(Joi.string());
+const team_1 = Joi.array().items(Joi.number().integer());
+const team_2 = Joi.array().items(Joi.number().integer());
 const score_team_1 = Joi.number().integer();
 const score_team_2 = Joi.number().integer();
 const location = Joi.string();
@@ -32,7 +32,6 @@ const updateMatchSchema = Joi.object({
     score_team_2: score_team_2,
     location: location,
 });
-
 
 
 module.exports = { createMatchSchema, updateMatchSchema, getMatchSchema }

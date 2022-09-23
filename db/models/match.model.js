@@ -11,11 +11,11 @@ const MatchSchema = {
     },
     team_1: {
         allowNull: true,
-        type: DataTypes.ARRAY(DataTypes.STRING)
+        type: DataTypes.ARRAY(DataTypes.INTEGER)
     },
     team_2: {
         allowNull: true,
-        type: DataTypes.ARRAY(DataTypes.STRING)
+        type: DataTypes.ARRAY(DataTypes.INTEGER)
     },
     score_team_1: {
         allowNull: true,
@@ -42,13 +42,12 @@ const MatchSchema = {
 class Match extends Model {
 
     static associate(models) {
-
-        // this.belongsToMany(models.User, {
-        //     as: 'users',
-        //     through: models.UserMatch,
-        //     foreignKey: 'match_id',
-        //     otherKey: 'user_id',
-        // })
+        this.belongsToMany(models.User, {
+            as: 'users',
+            through: models.UserMatch,
+            foreignKey: 'match_id',
+            otherKey: 'user_id',
+        })
     }
 
     static config(sequelize) {

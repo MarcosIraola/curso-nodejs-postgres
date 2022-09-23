@@ -10,11 +10,6 @@ class UserService {
         return newUser;
     }
 
-    async addMatchToUser(data) {
-        const addMatch = await models.UserMatch.create(data)
-        return addMatch;
-    }
-
     async find(query) {
         const options = {
             include: ['matches'],

@@ -3,10 +3,7 @@ const boom = require('@hapi/boom');
 const { models } = require('../libs/sequelize');
 
 class MatchService {
-
-    constructor() {
-
-    }
+    constructor() {}
 
     async create(data) {
         const newMatch = await models.Match.create(data)
@@ -19,7 +16,10 @@ class MatchService {
     }
 
     async findById(id) {
-        const match = await models.Match.findByPk(id)
+        const options = {
+            include: ['users'],
+        }
+        const match = await models.Match.findByPk(id, options)
         if (!match) {
             throw boom.notFound('Match not found')
         }
