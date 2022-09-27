@@ -17,7 +17,7 @@ class MatchService {
 
     async findById(id) {
         const options = {
-            include: ['users'],
+            // include: ['users'],
         }
         const match = await models.Match.findByPk(id, options)
         if (!match) {
