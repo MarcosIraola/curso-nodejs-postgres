@@ -14,6 +14,19 @@ class UserMatchService {
         return addMatch;
     }
 
+    async findById(id) {
+        const user_match = await models.UserMatch.findByPk(id)
+        if (!user_match) {
+            throw boom.notFound('user_match not found')
+        }
+        return user_match;
+    }
+
+    async delete(id) {
+        const user_match = await this.findById(id);
+        await user_match.destroy();
+        return { id };
+    }
 }
 
 module.exports = UserMatchService;
