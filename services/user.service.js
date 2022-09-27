@@ -29,6 +29,13 @@ class UserService {
         return all;
     }
 
+    async findByEmail(email) {
+        const all = await models.User.findOne({
+            where: {email}
+        });
+        return all;
+    }
+
     async findById(id) {
         const options = {
             include: ['matches'],
